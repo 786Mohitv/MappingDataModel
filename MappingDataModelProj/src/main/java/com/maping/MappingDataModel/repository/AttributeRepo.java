@@ -7,8 +7,8 @@ import org.springframework.stereotype.Repository;
 import com.maping.MappingDataModel.entity.AttributeMapping;
 
 @Repository
-public interface AttributeRepo extends JpaRepository<AttributeMapping,Long>{
+public interface AttributeRepo extends CrudRepository<AttributeMapping,Long>{
 	
-	
+//	public void deleteById(Long atId);
 	
 }

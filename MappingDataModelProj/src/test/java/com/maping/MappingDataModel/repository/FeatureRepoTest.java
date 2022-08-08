@@ -23,14 +23,29 @@ public class FeatureRepoTest {
 		AttributeMapping attributeMapping = new AttributeMapping(
 				"attr1",
 				"1attr"
-				);		
+				);
+		AttributeMapping attributeMapping1 = new AttributeMapping(
+				"attr2",
+				"2attr"
+				);
+		AttributeMapping attributeMapping2 = new AttributeMapping(
+				"attr3",
+				"3attr"
+				);
 		 
 		FeatureMapping featureMapping = new FeatureMapping(					
 				"c",
 				"d"				
 				);
+		
+		
 		featureMapping.addAttributes(attributeMapping);
+		featureMapping.addAttributes(attributeMapping1);
+		featureMapping.addAttributes(attributeMapping2);
+		attributeMapping.addFeatures(featureMapping);
+		
 		featureRepo.save(featureMapping);
+		//System.out.println(featureMapping.getAttributesList().get(0));
 	}
 	@Test
 	public void printgetFeatureMappingByFmId() {

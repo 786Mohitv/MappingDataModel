@@ -1,6 +1,7 @@
 package com.maping.MappingDataModel.entity;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -27,9 +28,9 @@ public class FeatureMapping {
 	private String sourceFeature;
 	private String targetFeature;
 	
-	@ManyToMany(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
+	@ManyToMany(cascade = CascadeType.ALL)
 	@JoinTable(
-	
+			
 			name = "Feature_Attribute_Mapping",
 			joinColumns = @JoinColumn(
 					
@@ -47,7 +48,7 @@ public class FeatureMapping {
 	@Override
 	public String toString() {
 		return "FeatureMapping [fmId=" + fmId + ", sourceFeature=" + sourceFeature + ", targetFeature=" + targetFeature
-				+ ", attributesList=" + attributesList + "]";
+				+ ", attributesList=" + attributesList+"]";
 	}
 
 	
@@ -56,7 +57,7 @@ public class FeatureMapping {
 		super();
 		this.sourceFeature = sourceFeature;
 		this.targetFeature = targetFeature;
-//		this.attributesList = attributesList;
+		
 	}
 
 

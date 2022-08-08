@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -30,10 +31,11 @@ public class AttributeMapping {
 	
 	
 	@ManyToMany(
-			mappedBy = "attributesList",
-			cascade = CascadeType.ALL	
+			mappedBy = "attributesList",cascade = CascadeType.ALL
 			
-	)	
+			
+	)
+	@JsonIgnore
 	private List<FeatureMapping> featuresList;
 
 	
@@ -87,13 +89,13 @@ public class AttributeMapping {
 	}
 
 	
-//	public void addAttributes(FeatureMapping featureMapping) {
-//		
-//		if(featuresList==null)
-//			featuresList = new ArrayList<>();
-//		else
-//			featuresList.add(featureMapping);
-//		
-//	}
+	public void addFeatures(FeatureMapping featureMapping) {
+		
+		if(featuresList==null)
+			featuresList = new ArrayList<>();
+		
+			featuresList.add(featureMapping);
+		
+	}
 	
 }
