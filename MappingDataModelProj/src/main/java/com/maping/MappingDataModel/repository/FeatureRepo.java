@@ -14,22 +14,13 @@ import org.springframework.transaction.annotation.Transactional;
 import com.maping.MappingDataModel.entity.FeatureMapping;
 
 @Repository
-public interface FeatureRepo extends JpaRepository<FeatureMapping, Long>{
+public interface FeatureRepo extends JpaRepository<FeatureMapping, Long>, CrudRepository<FeatureMapping, Long>{
 
+	@Transactional
+	@Modifying
+	public FeatureMapping save(FeatureMapping featureMapping);
 	
-	public FeatureMapping findByFmId(long fmId);	
-//	
-//	@Transactional
-//	@Modifying	
-//	@Query(value = "update feature_mapping set source_feature = ?2 , target_feature = ?3 where fm_id= ?1", nativeQuery = true
-//	)
-//	int updateFeatureMappingById( Long fmId, String  sourceFeature, String targetFeature);
-//	
-//	@Transactional
-//	@Modifying
-//	@Query(value = "update attribute_mapping set source_attribute = ?1, target_attribute = ?2 where at_id = ?1", nativeQuery = true)
-//	int updateAttributesByFmId(Long atId, String sourceAttribute, String targetAttribute);
-//		
-	
+	@Query(value = "select mappingmodel.feature_mapping.fm_id,source_feature, target_feature ,mappingmodel.attribute_mapping.at_id ,source_attribute, target_attribute  from mappingmodel.feature_mapping join mappingmodel.feature_attribute_mapping on mappingmodel.feature_mapping.fm_id = mappingmodel.feature_attribute_mapping.fm_id join mappingmodel.attribute_mapping on mappingmodel.feature_attribute_mapping.at_id = mappingmodel.attribute_mapping.at_id where mappingmodel.feature_mapping.fm_id = ?1",nativeQuery = true)
+	public FeatureMapping findByFmIdnative(long fmId);	
 	
 }

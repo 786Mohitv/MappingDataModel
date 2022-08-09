@@ -1,5 +1,6 @@
  package com.maping.MappingDataModel.service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.management.AttributeList;
@@ -59,15 +60,20 @@ public class FeatureService {
 	
 	public void updateFeatureMapping(Long fmId, FeatureMapping featureMapping) {
 		
-		FeatureMapping featureMappingOld = featureRepo.findByFmId(fmId);
-		List<AttributeMapping> temp = featureMappingOld.getAttributesList();		
+		FeatureMapping featureMappingOld = featureRepo.findByFmIdnative(fmId);
+		
+		List<AttributeMapping> temp = new ArrayList( featureMappingOld.getAttributesList());		
 		featureMappingOld.setSourceFeature(featureMapping.getSourceFeature());
 		featureMappingOld.setTargetFeature(featureMapping.getTargetFeature());
 		featureMappingOld.setAttributesList(featureMapping.getAttributesList());
-		featureRepo.save(featureMappingOld);
-//		for(AttributeMapping attributeMapping: temp) {
-//			attributeRepo.deleteById(attributeMapping.getAtId());
-//		}
+		
+    	featureRepo.save(featureMappingOld);   	
+    	
+		List<Long> idsIntegers = new ArrayList<>();		
+		for (AttributeMapping attributeMapping : temp) {
+			idsIntegers.add(attributeMapping.getAtId());			
+		}		
+		attributeRepo.deleteAllById(idsIntegers);
 	}
 	
 }

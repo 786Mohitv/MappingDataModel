@@ -42,14 +42,14 @@ public class FeatureRepoTest {
 		featureMapping.addAttributes(attributeMapping);
 		featureMapping.addAttributes(attributeMapping1);
 		featureMapping.addAttributes(attributeMapping2);
-		attributeMapping.addFeatures(featureMapping);
+//		attributeMapping.addFeatures(featureMapping);
 		
 		featureRepo.save(featureMapping);
 		//System.out.println(featureMapping.getAttributesList().get(0));
 	}
 	@Test
 	public void printgetFeatureMappingByFmId() {
-		FeatureMapping featureMapping2 = featureRepo.findByFmId(1);
+		FeatureMapping featureMapping2 = featureRepo.findByFmIdnative(1);
 		System.out.println(featureMapping2);	
 	}
 	

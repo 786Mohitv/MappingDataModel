@@ -1,5 +1,6 @@
 package com.maping.MappingDataModel.entity;
 
+
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -43,12 +44,12 @@ public class FeatureMapping {
 					referencedColumnName = "atId"
 			)
 	)	
-	private List<AttributeMapping> attributesList;
+	private List<AttributeMapping> attributesList = new ArrayList<>();
 	
 	@Override
 	public String toString() {
 		return "FeatureMapping [fmId=" + fmId + ", sourceFeature=" + sourceFeature + ", targetFeature=" + targetFeature
-				+ ", attributesList=" + attributesList+"]";
+				+ ", attributesList="; //+ attributesList+"]";
 	}
 
 	

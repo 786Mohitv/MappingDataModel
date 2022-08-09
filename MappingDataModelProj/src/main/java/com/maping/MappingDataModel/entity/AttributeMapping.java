@@ -13,13 +13,7 @@ import javax.persistence.ManyToMany;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-
 @Entity
-
 public class AttributeMapping {
 	
 	
@@ -30,21 +24,15 @@ public class AttributeMapping {
 	private String targetAttribute;
 	
 	
-	@ManyToMany(
-			mappedBy = "attributesList",cascade = CascadeType.ALL
-			
-			
-	)
-	@JsonIgnore
-	private List<FeatureMapping> featuresList;
+//	@ManyToMany(
+//			mappedBy = "attributesList",cascade = CascadeType.ALL
+//			
+//			
+//	)
+//	@JsonIgnore
+//	private List<FeatureMapping> featuresList;
 
 	
-	@Override
-	public String toString() {
-		return "AttributeMapping [atId=" + atId + ", sourceAttribute=" + sourceAttribute + ", targetAttribute="
-				+ targetAttribute + ", featuresList=" + featuresList + "]";
-	}
-
 	public AttributeMapping() {
 		super();
 		// TODO Auto-generated constructor stub
@@ -55,6 +43,14 @@ public class AttributeMapping {
 		this.sourceAttribute = sourceAttribute;
 		this.targetAttribute = targetAttribute;
 	}
+	
+	@Override
+	public String toString() {
+		return "AttributeMapping [atId=" + atId + ", sourceAttribute=" + sourceAttribute + ", targetAttribute="
+				+ targetAttribute+  "]";//", featuresList=" + featuresList + "]";
+	}
+
+	
 
 	public long getAtId() {
 		return atId;
@@ -79,23 +75,23 @@ public class AttributeMapping {
 	public void setTargetAttribute(String targetAttribute) {
 		this.targetAttribute = targetAttribute;
 	}
-
-	public List<FeatureMapping> getFeaturesList() {
-		return featuresList;
-	}
-
-	public void setFeaturesList(List<FeatureMapping> featuresList) {
-		this.featuresList = featuresList;
-	}
+//
+//	public List<FeatureMapping> getFeaturesList() {
+//		return featuresList;
+//	}
+//
+//	public void setFeaturesList(List<FeatureMapping> featuresList) {
+//		this.featuresList = featuresList;
+//	}
 
 	
-	public void addFeatures(FeatureMapping featureMapping) {
-		
-		if(featuresList==null)
-			featuresList = new ArrayList<>();
-		
-			featuresList.add(featureMapping);
-		
-	}
-	
+//	public void addFeatures(FeatureMapping featureMapping) {
+//		
+//		if(featuresList==null)
+//			featuresList = new ArrayList<>();
+//		
+//			featuresList.add(featureMapping);
+//		
+//	}
+//	
 }
