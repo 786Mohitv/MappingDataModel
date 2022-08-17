@@ -14,6 +14,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -24,11 +25,24 @@ import lombok.NoArgsConstructor;
 public class FeatureMapping {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long fmId;
+	private String fmId;
 	private String sourceFeature;
 	private String targetFeature;
 	
+	@ManyToOne
+	@JoinColumn(name = "type_id")
+	private MappingType mappingType;
+	
+	public MappingType getMappingType() {
+		return mappingType;
+	}
+
+	public void setMappingType(MappingType mappingType) {
+		this.mappingType = mappingType;
+	}
+
+
+
 	@ManyToMany(cascade = CascadeType.ALL)
 	@JoinTable(
 			
@@ -68,11 +82,11 @@ public class FeatureMapping {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Long getFmId() {
+	public String getFmId() {
 		return fmId;
 	}
 
-	public void setFmId(Long fmId) {
+	public void setFmId(String fmId) {
 		this.fmId = fmId;
 	}
 

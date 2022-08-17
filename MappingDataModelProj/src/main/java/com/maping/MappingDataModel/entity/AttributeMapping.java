@@ -24,15 +24,6 @@ public class AttributeMapping {
 	private String targetAttribute;
 	
 	
-//	@ManyToMany(
-//			mappedBy = "attributesList",cascade = CascadeType.ALL
-//			
-//			
-//	)
-//	@JsonIgnore
-//	private List<FeatureMapping> featuresList;
-
-	
 	public AttributeMapping() {
 		super();
 		// TODO Auto-generated constructor stub
